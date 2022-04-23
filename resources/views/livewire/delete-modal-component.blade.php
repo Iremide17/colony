@@ -1,0 +1,37 @@
+<div x-data="{ show: @entangle('showModal') }" x-show="show" x-cloak
+     class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+        <div class="modal-content" id="authomessage">
+            <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
+            <div class="modal-body">
+                <h4 class="modal-header-title">{{ $modalHeading }}</h4>
+                <p>{{ $modalMessage }}</p>
+                <div class="login-form">
+                    <form>
+
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <div class="input-with-icons">
+                                <input type="text" class="form-control" placeholder="Message Title">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Messages</label>
+                            <div class="input-with-icons">
+                                <textarea class="form-control ht-80"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button wire:click="destroy" type="button" class="btn btn-md full-width pop-login">Send Message</button>
+                            <button @cliick="show=false" type="button" class="btn btn-md full-width pop-login">Send Message</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
