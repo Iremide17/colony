@@ -235,7 +235,7 @@
                                         
                                             <div class="form-group col-md-12 mt-2">
                                                 <x-form.label for="description" value="{{ __('Property Description') }}" />
-                                                <textarea class="form-control h-120" name="description" :value="old('description')"></textarea>
+                                                <textarea class="form-control h-120" name="description" value="{{  old('description')  }}}}"></textarea>
                                                 <x-form.error for="description" />
                                             </div>
                                             

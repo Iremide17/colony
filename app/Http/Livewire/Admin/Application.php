@@ -14,14 +14,21 @@ class Application extends Component
     public Setting $application;
     public $app = [];
     public $photo;
-    public $appDescription = [''];
+  
+    public $inputs = [];
+    public $i = 1;
 
-    public function mount()
+    public function add($i)
     {
-        $this->application = Setting::first();
-        $this->app = Setting::first()->toArray();
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->inputs ,$i);
     }
 
+    public function remove($i)
+    {
+        unset($this->inputs[$i]);
+    }
     public function updateApplicationInformation()
     {
 

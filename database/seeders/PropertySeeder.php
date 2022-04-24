@@ -20,6 +20,7 @@ class PropertySeeder extends Seeder
                 'new house around ondo lipakala',
                 'new-house-around-ondo-lipakala',
                 1500,
+                300,
                 25,
                 now(),
                 1,
@@ -32,7 +33,9 @@ class PropertySeeder extends Seeder
                 '7.10380666404',
                 '4.8500226183',
                 'daily',
-                'this is a beutiful house',
+                'Do you need help moving to your new home? Our logistics department has got you covered. <br>
+                                You Interact with our e-commerce & points platform, Earn points as you search,
+                                order and make bookings for items available',
                 false,
                 true,
                 false,
@@ -55,6 +58,7 @@ class PropertySeeder extends Seeder
                 'Ondo road house for rent',
                 'ondo-road-house-for-rent',
                 1100,
+                250,
                 25,
                 now(),
                 1,
@@ -67,7 +71,9 @@ class PropertySeeder extends Seeder
                 '7.0833',
                 '4.8333',
                 'daily',
-                'this is a new house',
+                'Do you need help moving to your new home? Our logistics department has got you covered. <br>
+                            You Interact with our e-commerce & points platform, Earn points as you search,
+                            order and make bookings for items available',
                 true,
                 true,
                 true,
@@ -87,13 +93,13 @@ class PropertySeeder extends Seeder
                 1
             ),
         ]);
-
     }
 
-    private function createProperty( 
+    private function createProperty(
         string $title,
         string $slug,
         int $price,
+        int $discount,
         int $area,
         string $built,
         string $bedroom,
@@ -124,12 +130,12 @@ class PropertySeeder extends Seeder
         int $property_category_id,
         int $property_type_id,
         int $agent_id
-    )
-    {
+    ) {
         return Property::factory()->create(compact(
             'title',
             'slug',
             'price',
+            'discount',
             'area',
             'built',
             'bedroom',
@@ -162,5 +168,4 @@ class PropertySeeder extends Seeder
             'agent_id',
         ));
     }
-
 }

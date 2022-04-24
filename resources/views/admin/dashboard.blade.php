@@ -10,22 +10,63 @@
 
     <div class="dashboard-body">
 
+        {{-- <div class="row mb-4">
+            <div class="form-group col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="custom-file">
+                            <input id="my-input" class="custom-file-input" type="file" name="">
+                            <label for="my-input" class="custom-file-label btn btn-success">Upload Property Types cvv</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <x-buttons.default>
+                            View Types
+                        </x-buttons.default>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="custom-file">
+                    <input id="my-input" class="custom-file-input" type="file" name="">
+                    <label for="my-input" class="custom-file-label btn btn-success">Upload Property Categories cvv</label>
+                </div>
+            </div>
+        </div> --}}
+
         <div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<h4>
-                    You are a: 
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h4>
+                    You are a:
                     <span class="pc-title theme-cl">
                         @if (auth()->user()->type === 1)
-                            Super Adminstrator
+                        Super Adminstrator
                         @elseif(auth()->user()->type === 2)
-                            Administrator
+                        Administrator
                         @endif
                     </span>
                 </h4>
-			</div>
-		</div>
+            </div>
+        </div>
 
         <div class="row justify-content-center mt-4">
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="_category_box">
+                    <a href="{{ route('admin.user.index') }}">
+                        <div class="_category_elio">
+                            <div class="_category_thumb">
+                                <img src="{{ asset('img/f-4.png') }}" class="img-fluid hover" alt="" />
+                                <img src="{{ asset('img/f-44.png') }}" class="img-fluid simple" alt="" />
+                            </div>
+                            <div class="_category_caption">
+                                <h5>User</h5>
+                                <span>{{ $users->count() }} {{ Illuminate\Support\Str::plural('User', count($users)) }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="_category_box">
@@ -77,7 +118,7 @@
                     </a>
                 </div>
             </div>
-			
+
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="_category_box">
                     <a href="{{ route('admin.booking.index') }}">

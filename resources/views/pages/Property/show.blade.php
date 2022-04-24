@@ -3,7 +3,7 @@
     @section('title', application('name')." | Property: $property->title")
 
     @section('keywords')
-        {{ $property->purpose() }}
+    {{ $property->purpose() }}
     @endsection
 
     @section('description')
@@ -11,10 +11,10 @@
     @endsection
 
     @section('metaImage')
-        {{ asset('storage/' . $property->firstImage()) }}
+    {{ asset('storage/' . $property->firstImage()) }}
     @endsection
 
-	<section class="gallery_parts pt-2 pb-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
+    <section class="gallery_parts pt-2 pb-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 col-md-7 col-sm-12 pr-1">
@@ -44,7 +44,7 @@
             </div>
         </div>
     </section>
-    
+
     <div class="featured_slick_gallery gray d-block d-md-block d-lg-block d-xl-none">
         <div class="featured_slick_gallery-slide">
             <div class="featured_slick_padd">
@@ -65,17 +65,17 @@
         </div>
     </div>
     <!-- ============================ Hero Banner End ================================== -->
-    
+
     <!-- ============================ Property Detail Start ================================== -->
     <section class="pt-4">
         <div class="container">
             <div class="row">
-                
+
                 <!-- property main detail -->
                 <div class="col-lg-8 col-md-12 col-sm-12">
-                    
+
                     <div class="property_info_detail_wrap mb-4">
-                        
+
                         <div class="property_info_detail_wrap_first">
                             <div class="pr-price-into">
                                 <ul class="prs_lists">
@@ -84,165 +84,170 @@
                                     <li><span class="gar">B-{{ $property->yearBuilt()}}</span></li>
 
                                     @if ($property->area)
-                                        <li><span class="sqft">{{ $property->area()}} sqft  </span></li>  
+                                    <li><span class="sqft">{{ $property->area()}} sqft </span></li>
                                     @endif
                                 </ul>
                                 <h2>{{ $property->title()}}</h2>
                                 <span><i class="lni-map-marker"></i> {{ $property->address()}}</span>
                             </div>
                         </div>
-                        
+
                         <div class="property_detail_section">
                             <div class="prt-sect-pric">
                                 <ul class="_share_lists">
                                     <li>
-                                        <x-social.share :property="$property" url="{{ Request::url() }}"/>
+                                        <x-social.share :property="$property" url="{{ Request::url() }}" />
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
                     <!-- Single Block Wrap -->
                     <div class="property_block_wrap">
-                        
+
                         <div class="property_block_wrap_header">
                             <h4 class="property_block_title">About Property</h4>
                         </div>
-                        
+
                         <div class="block-body">
                             <p>{{ $property->description()}}</p>
                         </div>
-                        
+
                     </div>
-                    
+
                     <!-- Single Block Wrap -->
                     <div class="property_block_wrap">
-                        
+
                         <div class="property_block_wrap_header">
                             <h4 class="property_block_title">Advance Features</h4>
                         </div>
-                        
+
                         <div class="block-body">
                             <ul class="row p-0 m-0">
                                 @if ($property->bedroom)
-                                    <li class="col-lg-4 col-md-6 mb-2 p-0">
-                                        <i class="fa fa-bed mr-1"></i> 
-                                        {{ $property->bedroom()}} Bedrooms
-                                    </li>
+                                <li class="col-lg-4 col-md-6 mb-2 p-0">
+                                    <i class="fa fa-bed mr-1"></i>
+                                    {{ $property->bedroom()}} Bedrooms
+                                </li>
                                 @endif
 
                                 @if ($property->bathroom)
-                                    <li class="col-lg-4 col-md-6 mb-2 p-0">
-                                        <i class="fa fa-bath mr-1"></i> 
-                                        {{ $property->bathroom()}} Bathrooms
-                                    </li>
+                                <li class="col-lg-4 col-md-6 mb-2 p-0">
+                                    <i class="fa fa-bath mr-1"></i>
+                                    {{ $property->bathroom()}} Bathrooms
+                                </li>
                                 @endif
 
                                 @if ($property->area)
-                                    <li class="col-lg-4 col-md-6 mb-2 p-0">
-                                        <i class="fa fa-expand-arrows-alt mr-1"></i> 
-                                        {{ $property->area()}} sqft
-                                    </li>
+                                <li class="col-lg-4 col-md-6 mb-2 p-0">
+                                    <i class="fa fa-expand-arrows-alt mr-1"></i>
+                                    {{ $property->area()}} sqft
+                                </li>
                                 @endif
 
                                 @if ($property->built)
-                                    <li class="col-lg-4 col-md-6 mb-2 p-0">
-                                        <i class="fa fa-building mr-1"></i> 
-                                        Build {{ $property->yearBuilt()}}
-                                    </li>
+                                <li class="col-lg-4 col-md-6 mb-2 p-0">
+                                    <i class="fa fa-building mr-1"></i>
+                                    Build {{ $property->yearBuilt()}}
+                                </li>
                                 @endif
 
                             </ul>
                         </div>
-                        
+
                     </div>
-                    
+
                     <!-- Single Block Wrap -->
                     <div class="property_block_wrap">
-                        
+
                         <div class="property_block_wrap_header">
                             <h4 class="property_block_title">Amenities</h4>
                         </div>
-                        
+
                         <div class="block-body">
                             <ul class="avl-features third">
                                 @if ($property->isAirConditioned == true)
-                                    <li class="active">Air Conditioning</li>
+                                <li class="active">Air Conditioning</li>
                                 @endif
                                 @if ($property->isSwimmed == true)
-                                    <li class="active">Swimming Pool</li>
+                                <li class="active">Swimming Pool</li>
                                 @endif
                                 @if ($property->isFurnished == true)
-                                    <li class="active">Furnished</li>
+                                <li class="active">Furnished</li>
                                 @endif
                                 @if ($property->isParked == true)
-                                    <li class="active">Car Parking</li>
+                                <li class="active">Car Parking</li>
                                 @endif
                             </ul>
                         </div>
-                        
+
                     </div>
-                    
+
                     <!-- Single Block Wrap -->
                     @if ($property->video() != null)
-                        <div class="property_block_wrap">
-                            
-                            <div class="property_block_wrap_header">
-                                <h4 class="property_block_title">Property video</h4>
-                            </div>
-                            
-                            <div class="block-body">
-                                <div class="property_video">
-                                    <div class="thumb">
-                                        <img class="pro_img img-fluid w100" src="{{ asset('storage/'.$property->firstImage()) }}" alt="{{ $property->title()}}">
-                                        <div class="overlay_icon">
-                                            <div class="bb-video-box">
-                                                <div class="bb-video-box-inner">
-                                                    <div class="bb-video-box-innerup">
-                                                        <a href="{{ $property->video }}" data-toggle="modal" data-target="#popup-video" class="theme-cl"><i class="ti-control-play"></i></a>
-                                                    </div>
+                    <div class="property_block_wrap">
+
+                        <div class="property_block_wrap_header">
+                            <h4 class="property_block_title">Property video</h4>
+                        </div>
+
+                        <div class="block-body">
+                            <div class="property_video">
+                                <div class="thumb">
+                                    <img class="pro_img img-fluid w100" src="{{ asset('storage/'.$property->firstImage()) }}" alt="{{ $property->title()}}">
+                                    <div class="overlay_icon">
+                                        <div class="bb-video-box">
+                                            <div class="bb-video-box-inner">
+                                                <div class="bb-video-box-innerup">
+                                                    <a href="{{ $property->video }}" data-toggle="modal" data-target="#popup-video" class="theme-cl"><i class="ti-control-play"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
+
+                    </div>
                     @endif
-                    
+
                     <!-- Single Reviews Block -->
                     @auth
-                        <x-review :model="$property" :key="$property->id()"/>
+                    <x-review :model="$property" :key="$property->id()" />
                     @endauth
-                    
+
                 </div>
-                
+
                 <!-- property Sidebar -->
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="property-sidebar">
-                        
+
                         <!-- Agent Detail -->
                         <div class="sider_blocks_wrap">
                             <div class="side-booking-body">
                                 <div class="agent-_blocks_title">
-                                
+
                                     <div class="agent-_blocks_thumb"><img src="{{ asset('storage/'.$property->agent->image())}}" alt="{{ $property->agent->user()->name() }}"></div>
                                     <div class="agent-_blocks_caption">
                                         <h4><a href="#">{{ $property->agent->user()->name() }}</a></h4>
-                                            @if ($property->agent->isVerified == true)
-                                                <span class="approved-agent"><i class="ti-check"></i>approved</span>
-                                            @else
-                                                <span class="unapproved-agent"><i class="ti-times"></i>Not approved</span>
-                                            @endif
+                                        @if ($property->agent->isVerified == true)
+                                            <span class="approved-agent"><i class="ti-check"></i>approved</span>
+                                        @else
+                                            <span class="unapproved-agent"><i class="ti-times"></i>Not approved</span>
+                                        @endif
+                                        <br>
+                                        <span class="active">
+                                            Rank: <strong>{{ $property->agent->user()->rank() }}</strong>
+                                        </span>
                                     </div>
+
                                     <div class="clearfix"></div>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
-                        
+
                         <div class="sider_blocks_wrap">
                             <div class="side-booking-header">
                                 <div class="sb-header-left">
@@ -253,18 +258,18 @@
                                 </div>
                                 <div class="price_offer">20% Off</div>
                             </div>
-                            
-                            <livewire:pages.property.book :property="$property" :key="$property->id()"/>
-                            
+
+                            <livewire:pages.property.book :property="$property" :key="$property->id()" />
+
                         </div>
-                    
+
                         <!-- Similar Property -->
                         <div class="sidebar-widgets">
-                            
+
                             <h4>Similar Property</h4>
-                            
+
                             <div class="sidebar_featured_property">
-                                
+
                                 <!-- List Sibar Property -->
                                 <div class="sides_list_property">
                                     <div class="sides_list_property_thumb">
@@ -283,7 +288,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- List Sibar Property -->
                                 <div class="sides_list_property">
                                     <div class="sides_list_property_thumb">
@@ -302,7 +307,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- List Sibar Property -->
                                 <div class="sides_list_property">
                                     <div class="sides_list_property_thumb">
@@ -321,7 +326,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- List Sibar Property -->
                                 <div class="sides_list_property">
                                     <div class="sides_list_property_thumb">
@@ -340,16 +345,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
-                    
+
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
-			
+
 </x-guest-layout>

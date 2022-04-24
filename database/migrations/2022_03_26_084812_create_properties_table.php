@@ -18,6 +18,7 @@ class CreatePropertiesTable extends Migration
             $table->string('title');
             $table->string('slug')->nullable();
             $table->double('price');
+            $table->double('discount')->nullable();
             $table->integer('area')->nullable();
             $table->string('built');
             $table->string('bedroom')->nullable();

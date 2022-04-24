@@ -140,13 +140,51 @@
             <div class="tab-pane fade" :class="currentTab == 'profile' ? 'active show' : ''" wire:ignore.self id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        {{-- <form>
                             <div class=" add-input">
                                 <div class="row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-10">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter Name" wire:model="name.0">
-                                            @error('name.0') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <textarea class="form-control h-120" name="description" value="{{  old('description')  }}" placeholder="application description"></textarea>
+                                            <x-form.error for="description" />
                                         </div>
                                     </div>
-                                    <div class=
+                                    <div class="col-md-2">
+                                        <button class="btn text-white btn-info btn-sm" wire:click.prevent="add({{$i}})">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                            @foreach($inputs as $key => $value)
+                                <div class=" add-input">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <textarea class="form-control h-120" name="description" value="{{  old('description')  }}" placeholder="application description"></textarea>
+                                                <x-form.error for="description" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                      
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="button" wire:click.prevent="store()" class="btn btn-success btn-sm">Submit</button>
+                                </div>
+                            </div>
+                      
+                        </form> --}}
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" :class="currentTab == 'contact' ? 'active show' : ''" wire:ignore.self id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+        </div>
+    </div>
+</div>

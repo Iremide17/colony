@@ -18,7 +18,7 @@ class Agent extends Model
     protected $table = self::TABLE;
 
     protected $fillable = [
-       
+
         'telephone',
         'address',
         'image',
@@ -26,7 +26,7 @@ class Agent extends Model
         'user_id',
     ];
 
-    protected $with =[
+    protected $with = [
         'userRelation'
     ];
 
@@ -60,7 +60,7 @@ class Agent extends Model
     {
         return $this->created_at->format('M, d Y');
     }
-    
+
 
     public function scopeLoadLatest(Builder $query, $count = 4)
     {
@@ -77,11 +77,9 @@ class Agent extends Model
     public function scopeSearch($query, $term)
     {
         $term = "%$term%";
-        return $query->where(function($query) use ($term) {
+        return $query->where(function ($query) use ($term) {
             $query->where('telephone', 'like', $term)
-                    ->orWhere('address', 'like', $term);
-
+                ->orWhere('address', 'like', $term);
         });
     }
-    
 }

@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\PropertyController;
@@ -11,7 +13,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/setting', [DashboardController::class, 'setting'])->name('application');
-
 
     Route::get('/transactions', [DashboardController::class, 'transaction'])->name('transaction.index');
 
@@ -43,4 +44,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('/', [TicketController::class, 'store'])->name('store');
     });
 
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/create', [UserController::class, 'create'])->name('create');
+        Route::post('/', [UserController::class, 'store'])->name('store');
+        Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+        Route::put('/{user}', [UserController::class, 'update'])->name('update');
+        Route::delete('/{user}', [UserController::class, 'destroy'])->name('delete');
+    });
 });

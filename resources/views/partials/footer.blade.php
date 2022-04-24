@@ -12,8 +12,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Email Address">
                                 <div class="input-group-append">
-                                    <button type="button"
-                                        class="input-group-text theme-bg b-0 text-light">Subscribe</button>
+                                    <button type="button" class="input-group-text theme-bg b-0 text-light">Subscribe</button>
                                 </div>
                             </div>
                         </div>
@@ -23,21 +22,18 @@
                 <div class="col-lg-6 col-md-7 ml-auto">
                     <div class="row">
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
                             <div class="footer_widget">
                                 <h4 class="widget_title">Layouts</h4>
                                 <ul class="footer-menu">
-                                    <li><a href="#">Home Page</a></li>
-                                    <li><a href="#">About Page</a></li>
-                                    <li><a href="#">Service Page</a></li>
-                                    <li><a href="#">Property Page</a></li>
-                                    <li><a href="#">Contact Page</a></li>
-                                    <li><a href="#">Single Blog</a></li>
+                                    <li><a href="{{ url('/')}}">Home Page</a></li>
+                                    <li><a href="{{  route('property.index') }}">Property Page</a></li>
+                                    <li><a href="{{ url('contact') }}">Contact Page</a></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4">
+                        {{-- <div class="col-lg-4 col-md-4">
                             <div class="footer_widget">
                                 <h4 class="widget_title">All Sections</h4>
                                 <ul class="footer-menu">
@@ -49,15 +45,13 @@
                                     <li><a href="#">Footers</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-6 col-md-6">
                             <div class="footer_widget">
                                 <h4 class="widget_title">Company</h4>
                                 <ul class="footer-menu">
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Pricing</a></li>
+                                    <li><a href="{{ url('about-us') }}">About</a></li>
                                     <li><a href="{{ route('terms.show') }}">Our Terms of use</a></li>
                                     <li><a href="{{ route('policy.show') }}">Our Privacy Policy</a></li>
                                 </ul>
@@ -91,44 +85,35 @@
                 <div class="resp_log_wrap">
                     <div class="resp_log_thumb" style="background:url({{ asset('img/log.jpg') }})no-repeat;"></div>
                     <div class="resp_log_caption">
-                        <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i
-                                class="ti-close"></i></span>
+                        <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
                         <div class="edlio_152">
                             <ul class="nav nav-pills tabs_system center" id="pills-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="pills-login-tab" data-toggle="pill"
-                                        href="#pills-login" role="tab" aria-controls="pills-login"
-                                        aria-selected="true"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                                    <a class="nav-link active" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="pills-signup-tab" data-toggle="pill"
-                                        href="#pills-signup" role="tab" aria-controls="pills-signup"
-                                        aria-selected="false"><i class="fas fa-user-plus mr-2"></i>Register</a>
+                                    <a class="nav-link" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab" aria-controls="pills-signup" aria-selected="false"><i class="fas fa-user-plus mr-2"></i>Register</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
-                                aria-labelledby="pills-login-tab">
+                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
                                 <div class="login-form">
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
 
                                         <div class="form-group">
-                                            <x-form.label for="email" value="{{ __('Email') }}"/>
+                                            <x-form.label for="email" value="{{ __('Email') }}" />
                                             <div class="input-with-icon">
-                                                <x-jet-input id="email" class="form-control" type="email" name="email"
-                                                    :value="old('email')" required autofocus /> <i
-                                                    class="ti-user"></i>
+                                                <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus /> <i class="ti-user"></i>
                                             </div>
                                             <x-form.error for="email" />
                                         </div>
 
                                         <div class="form-group">
-                                            <x-form.label for="password" value="{{ __('Password') }}"/>
+                                            <x-form.label for="password" value="{{ __('Password') }}" />
                                             <div class="input-with-icon">
-                                                <x-jet-input id="password" class="form-control" type="password"
-                                                    name="password" required autocomplete="current-password" />
+                                                <x-jet-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
                                                 <i class="ti-unlock"></i>
                                             </div>
                                             <x-form.error for="password" />
@@ -141,9 +126,9 @@
                                                     <label for="dd" class="checkbox-custom-label">Remember Me</label>
                                                 </div>
                                                 @if (Route::has('password.request'))
-                                                    <div class="eltio_k2">
-                                                        <a href="#">Lost Your Password?</a>
-                                                    </div>
+                                                <div class="eltio_k2">
+                                                    <a href="#">Lost Your Password?</a>
+                                                </div>
                                                 @endif
                                             </div>
                                         </div>
@@ -155,8 +140,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-signup" role="tabpanel"
-                                aria-labelledby="pills-signup-tab">
+                            <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
                                 <div class="login-form">
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
@@ -198,25 +182,24 @@
                                         </div>
 
                                         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                                            <div class="form-group">
-                                                <div class="eltio_ol9">
-                                                    <div class="eltio_k1">
-                                                        <input id="dds" class="checkbox-custom" name="terms" type="checkbox">
-                                                        <label for="dds" class="checkbox-custom-label">
-                                                            {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                                                'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                                                'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                                            ]) !!}
-                                                        </label>
-                                                    </div>
+                                        <div class="form-group">
+                                            <div class="eltio_ol9">
+                                                <div class="eltio_k1">
+                                                    <input id="dds" class="checkbox-custom" name="terms" type="checkbox">
+                                                    <label for="dds" class="checkbox-custom-label">
+                                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+                                                        ]) !!}
+                                                    </label>
                                                 </div>
-                                                <x-form.error for="terms" />
                                             </div>
+                                            <x-form.error for="terms" />
+                                        </div>
                                         @endif
 
                                         <div class="form-group">
-                                            <button type="submit"
-                                                class="btn btn-md full-width pop-login">Register</button>
+                                            <button type="submit" class="btn btn-md full-width pop-login">Register</button>
                                         </div>
 
                                     </form>
@@ -230,8 +213,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="autho-message" tabindex="-1" role="dialog" aria-labelledby="authomessage"
-    aria-hidden="true">
+<div class="modal fade" id="autho-message" tabindex="-1" role="dialog" aria-labelledby="authomessage" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
         <div class="modal-content" id="authomessage">
             <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>

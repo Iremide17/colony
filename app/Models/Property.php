@@ -37,6 +37,7 @@ class Property extends Model implements Viewable, CommentAble
         'title',
         'slug',
         'price',
+        'discount',
         'area',
         'built',
         'bedroom',
@@ -69,8 +70,8 @@ class Property extends Model implements Viewable, CommentAble
         'agent_id',
     ];
 
-    protected $with =[
-        'agent', 'category', 'type', 'userRelation', 'ticketsRelation', 'favouritesRelation','commentsRelation'
+    protected $with = [
+        'agent', 'category', 'type', 'userRelation', 'ticketsRelation', 'favouritesRelation', 'commentsRelation'
     ];
 
     public function commentAbleTitle(): string
@@ -86,7 +87,7 @@ class Property extends Model implements Viewable, CommentAble
     protected $casts = [
         'title'  =>  TitleCast::class,
         'rentFrequent'  =>  TitleCast::class,
-        'built'=> 'datetime',
+        'built' => 'datetime',
     ];
 
     public function id(): int
@@ -131,12 +132,12 @@ class Property extends Model implements Viewable, CommentAble
 
     public function excerpt(int $limit = 250): string
     {
-        return Str::limit(strip_tags($this->description()) , $limit);
+        return Str::limit(strip_tags($this->description()), $limit);
     }
 
     public function excerptTitle(int $limit = 10): string
     {
-        return Str::limit(strip_tags($this->title()) , $limit);
+        return Str::limit(strip_tags($this->title()), $limit);
     }
 
     public function getRouteKeyName()
@@ -163,6 +164,11 @@ class Property extends Model implements Viewable, CommentAble
     public function price(): string
     {
         return $this->price;
+    }
+
+    public function discount(): string
+    {
+        return $this->discount;
     }
 
     public function address(): string
@@ -228,28 +234,26 @@ class Property extends Model implements Viewable, CommentAble
         return $query->inRandomOrder()
             ->verified()
             ->available()
-            ->orderBy('created_at','desc')
+            ->orderBy('created_at', 'desc')
             ->paginate($count);
     }
 
     public function scopeSearch($query, $term)
     {
         $term = "%$term%";
-        return $query->where(function($query) use ($term) {
+        return $query->where(function ($query) use ($term) {
             $query->where('title', 'like', $term)
-                    ->orWhere('address', 'like', $term);
-
+                ->orWhere('address', 'like', $term);
         });
     }
 
     public function scopeSearchLocation($query, $term)
     {
         $term = "%$term%";
-        return $query->where(function($query) use ($term) {
+        return $query->where(function ($query) use ($term) {
             $query->where('state', 'like', $term)
-                    ->orWhere('address', 'like', $term)
-                    ->orWhere('city', 'like', $term);
-
+                ->orWhere('address', 'like', $term)
+                ->orWhere('city', 'like', $term);
         });
     }
 
@@ -301,6 +305,4 @@ class Property extends Model implements Viewable, CommentAble
 
         return $available[$this->isAvailable];
     }
-
-    
 }

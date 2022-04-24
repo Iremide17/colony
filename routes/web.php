@@ -5,14 +5,16 @@ use App\Models\PropertyType;
 use App\Models\PropertyCategory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pages\UserController;
+use App\Http\Controllers\Pages\MarketController;
 use App\Http\Controllers\Pages\TicketController;
 use App\Http\Controllers\Pages\BookingController;
 use App\Http\Controllers\Pages\CommentController;
+use App\Http\Controllers\Pages\ContactController;
 use App\Http\Controllers\Pages\FurnishController;
 use App\Http\Controllers\Pages\PaystackController;
 use App\Http\Controllers\Pages\PropertyController;
 use App\Http\Controllers\Freelancer\FreelancerController;
-    
+
 
 require 'admin.php';
 require 'agent.php';
@@ -25,7 +27,7 @@ Route::get('/', function () {
     return view('welcome', [
         'properties' => $properties,
         'categories' => $categories,
-        'types'     => $types         
+        'types'     => $types
     ]);
 });
 
@@ -37,9 +39,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::post('/send/message', [ContactController::class, 'store'])->name('send.message');
+
 Route::group(['prefix' => 'market', 'as' => 'market.'], function () {
-    Route::get('/', [PropertyController::class, 'index'])->name('index');
-    Route::get('show/{property}', [PropertyController::class, 'show'])->name('show');
+    Route::get('/', [MarketController::class, 'index'])->name('index');
+    Route::get('show/{product}', [MarketController::class, 'show'])->name('show');
 });
 
 
